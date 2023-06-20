@@ -19,4 +19,16 @@ const createSubscription = (subscription) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getSubscriptions, createSubscription };
+const updateSubscription = (subscription) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/subscriptions/${subscription.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(subscription),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
+export { getSubscriptions, createSubscription, updateSubscription };

@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "rare-v2-group-4",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Whitley Beers, Mark Hamilton, Wesley Vance, Tyler Eisen",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

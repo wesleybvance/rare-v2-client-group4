@@ -9,7 +9,7 @@ const firebaseCredentials = {
 
 const clientCredentials = {
   ...firebaseCredentials,
-  databaseURL: process.env.NEXT_PUBLIC_DATABASE_URL,
+  databaseURL: 'http://localhost:8000',
 };
 
 if (!firebase.apps.length) {

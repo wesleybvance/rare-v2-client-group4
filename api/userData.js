@@ -12,8 +12,8 @@ const getUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleUser = (uid) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/rare_users/${uid}`)
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rare_users/${id}`)
     .then((response) => response.json())
     .then(resolve)
     .catch(reject);

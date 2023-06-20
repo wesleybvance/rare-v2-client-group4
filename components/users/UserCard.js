@@ -17,7 +17,7 @@ const UserCard = ({
       <Card.Subtitle>Email: {email}</Card.Subtitle>
       <Card.Text>{bio}</Card.Text>
     </Card.Body>
-    <Card.Footer className="text-muted">Subscription Count: {subscriptionCount}</Card.Footer>
+    <Card.Footer className="text-muted">Followers: {subscriptionCount}</Card.Footer>
   </Card>
 );
 

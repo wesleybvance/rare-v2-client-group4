@@ -26,7 +26,6 @@ function UserPage() {
                     <div className="card-body d-flex flex-column">
                       <section key={`user--${user.id}`} className="user">
                         <UserCard id={user.id} firstName={user.first_name} lastName={user.last_name} bio={user.bio} profileImageUrl={user.profile_image_url} email={user.email} subscriptionCount={user.subscription_count} />
-                        {console.warn(user)}
                       </section>
                     </div>
                   </div>

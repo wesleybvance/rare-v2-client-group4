@@ -32,8 +32,20 @@ const updateRareUser = (user, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rare_users/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
 export {
   getUsers,
   getSingleUser,
   updateRareUser,
+  deleteUser,
 };

@@ -14,7 +14,7 @@ const initialState = {
   profileImageUrl: '',
 };
 function RegisterForm({ user, updateUser }) {
-  const [formData, setFormData] = useState({ initialState, uid: user.uid });
+  const [formData, setFormData] = useState(initialState);
   const router = useRouter();
   const { id } = router.query;
 
@@ -103,7 +103,7 @@ RegisterForm.propTypes = {
 };
 
 RegisterForm.defaultProps = {
-  updateUser: PropTypes.func,
+  updateUser: () => {},
 };
 
 export default RegisterForm;

@@ -11,7 +11,7 @@ const UserCard = ({
   subscriptionCount,
 }) => (
   <Card className="text-center" style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={profileImageUrl} />
+    <Card.Img variant="top" src={profileImageUrl} className="card-img-top" />
     <Card.Body>
       <Card.Title>Name: {firstName} {lastName}</Card.Title>
       <Card.Subtitle>Email: {email}</Card.Subtitle>

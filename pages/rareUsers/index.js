@@ -22,7 +22,7 @@ function UserPage() {
             <div className="col-10">
               <div className="row">
                 {users.map((user) => (
-                  <div className="col-lg-4 mb-3 d-flex align-items-stretch user-cards">
+                  <div className="col-lg-4 col-h-100 mb-3 d-flex align-items-stretch user-cards">
                     <div className="card-body d-flex flex-column">
                       <section key={`user--${user.id}`} className="user">
                         <UserCard id={user.id} firstName={user.first_name} lastName={user.last_name} bio={user.bio} profileImageUrl={user.profile_image_url} email={user.email} subscriptionCount={user.subscription_count} />

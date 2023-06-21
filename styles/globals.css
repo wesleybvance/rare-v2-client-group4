@@ -20,3 +20,13 @@ a {
 body {
   background-color: #88effd;
 }
+
+.card-img-top {
+  width: 100%;
+  height: 18vw;
+  object-fit: cover;
+}
+
+.card {
+  height: 30vw;
+}

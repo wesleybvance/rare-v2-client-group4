@@ -4,13 +4,19 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { signOut } from '../../utils/auth';
-import { getSingleUser } from '../../api/userData';
+import { deleteUser, getSingleUser } from '../../api/userData';
 
 export default function UserProfile() {
   const [userDetails, setUserDetails] = useState({});
   const { user } = useAuth();
   const router = useRouter();
   // const { id } = router.query;
+
+  const deleteProfile = () => {
+    if (window.confirm('Are you sure you would like to delete your profile? You cannot undo this.')) {
+      deleteUser(user.id).then(() => signOut());
+    }
+  };
 
   const getAUser = () => {
     getSingleUser(user.id).then((data) => setUserDetails(data));
@@ -47,7 +53,8 @@ export default function UserProfile() {
         >
           Edit Profile
         </Button>
-        <Button variant="danger" onClick={signOut}> Sign Out</Button>
+        <Button variant="danger" onClick={deleteProfile}> Delete Profile</Button>
+        <Button variant="success" onClick={signOut}> Sign Out</Button>
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { deletePost } from '../utils/data/postdata';
 
 const PostCard = ({
@@ -23,10 +24,11 @@ const PostCard = ({
   const formattedDate = new Date(publicationDate).toLocaleDateString();
   return (
     <Card className="text-center">
-      <Card.Header>Post</Card.Header>
+      <Link href={`/posts/${id}`} passHref>
+        <Card.Header style={{ cursor: 'pointer' }}>{title}</Card.Header>
+      </Link>
       <Card.Body>
-        <Card.Text>{title}</Card.Text>
-        <Card.Text>{imageUrl}</Card.Text>
+        <img src={imageUrl} alt={title} style={{ width: '100%', height: 'auto' }} />
         <Card.Text>{formattedDate}</Card.Text>
         <Card.Text>{content}</Card.Text>
       </Card.Body>

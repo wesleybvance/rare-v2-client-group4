@@ -13,12 +13,21 @@ const getPosts = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSinglePost = (id) => fetch(`${clientCredentials.databaseURL}/posts/${id}`)
-  .then((response) => response.json())
-  .catch((error) => {
-    console.error('Error fetching game:', error);
-    throw error;
-  });
+const getSinglePost = (id) => new Promise((resolve, reject) => {
+  // Make a GET request to retrieve a single post by its ID
+  fetch(`${clientCredentials.databaseURL}/posts/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch((error) => {
+      console.warn('Error fetching post:', error);
+      reject(error);
+    });
+});
 
 const createPost = (post) => fetch(`${clientCredentials.databaseURL}/posts`, {
   method: 'POST',

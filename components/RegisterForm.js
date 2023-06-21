@@ -6,14 +6,15 @@ import { useRouter } from 'next/router';
 import { registerUser } from '../utils/auth'; // Update with path to registerUser
 import { getSingleUser, updateRareUser } from '../api/userData';
 
-const initialState = {
-  firstName: '',
-  lastName: '',
-  bio: '',
-  email: '',
-  profileImageUrl: '',
-};
 function RegisterForm({ user, updateUser }) {
+  const initialState = {
+    firstName: '',
+    lastName: '',
+    bio: '',
+    email: '',
+    profileImageUrl: '',
+    uid: user.uid,
+  };
   const [formData, setFormData] = useState(initialState);
   const router = useRouter();
   const { id } = router.query;

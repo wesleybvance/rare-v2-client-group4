@@ -25,6 +25,7 @@ const UserCard = ({
   };
   useEffect(() => {
     checkSubs();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

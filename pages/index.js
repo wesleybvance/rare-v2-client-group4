@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { getSubscriptions } from '../utils/data/subscriptionData';
+import { getSubscriptions } from '../api/subscriptionData';
 
 function Home() {
   const { user } = useAuth();

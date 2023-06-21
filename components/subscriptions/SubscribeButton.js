@@ -1,20 +1,20 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import propTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
-import { createSubscription } from '../../utils/data/subscriptionData';
+import { createSubscription } from '../../api/subscriptionData';
 
-export default function SubscribeButton() {
+export default function SubscribeButton({ authorId }) {
   const { user } = useAuth();
   const router = useRouter();
-  const { authorId } = router.query;
 
   const subscribe = () => {
     const subscription = {
       followerId: user.id,
       authorId,
     };
-    createSubscription(subscription);
+    createSubscription(subscription).then(router.reload);
   };
 
   return (
@@ -23,3 +23,7 @@ export default function SubscribeButton() {
     </Button>
   );
 }
+
+SubscribeButton.propTypes = {
+  authorId: propTypes.number.isRequired,
+};

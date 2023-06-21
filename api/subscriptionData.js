@@ -1,4 +1,4 @@
-import { clientCredentials } from '../client';
+import { clientCredentials } from '../utils/client';
 
 const getSubscriptions = (userId) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/subscriptions?user=${userId}`)
@@ -31,4 +31,18 @@ const updateSubscription = (subscription) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getSubscriptions, createSubscription, updateSubscription };
+const checkSubscription = (id, payload) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rare_users/${id}/check_subscription`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => resolve(response.json()))
+    .catch(reject);
+});
+
+export {
+  getSubscriptions, createSubscription, updateSubscription, checkSubscription,
+};

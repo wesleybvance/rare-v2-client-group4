@@ -24,6 +24,28 @@ const postComment = (uid, postId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleComment = (commentId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/comments/${commentId}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const updateComment = (comment) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/comments/${comment.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(
+      comment,
+    ),
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  deleteComment, postComment,
+  deleteComment, postComment, getSingleComment, updateComment,
 };

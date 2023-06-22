@@ -3,18 +3,31 @@ import { Image } from 'react-bootstrap';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getSingleUser } from '../../api/userData';
+import { useAuth } from '../../utils/context/authContext';
+import { checkSubscription } from '../../api/subscriptionData';
+import SubscribeButton from '../../components/subscriptions/SubscribeButton';
+import UnsubscribeButton from '../../components/subscriptions/UnsubscribeButton';
 
 export default function UserProfile() {
   const [userDetails, setUserDetails] = useState({});
   const router = useRouter();
   const { id } = router.query;
+  const { user } = useAuth();
+  const [subscription, setSubscription] = useState(false);
 
   const getAUser = () => {
     getSingleUser(id).then((data) => setUserDetails(data));
   };
 
+  const checkSubs = () => {
+    const payload = { followerId: user.id };
+    checkSubscription(id, payload)
+      .then(setSubscription);
+  };
+
   useEffect(() => {
     getAUser(id);
+    checkSubs();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -38,6 +51,8 @@ export default function UserProfile() {
         <h2>Email: {userDetails.email}</h2>
         <p>Bio: {userDetails.bio} </p>
         <p>Followers: {userDetails.subscription_count} </p>
+        {id !== user.id && !subscription ? <SubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
+        {id !== user.id && subscription ? <UnsubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
       </div>
     </>
   );

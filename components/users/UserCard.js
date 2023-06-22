@@ -38,8 +38,8 @@ const UserCard = ({
       </Card.Body>
       <Card.Footer className="text-muted">Followers: {subscriptionCount}</Card.Footer>
       <Card.Footer>
-        {id !== user.id && !subscription ? <SubscribeButton authorId={id} /> : ''}
-        {id !== user.id && subscription ? <UnsubscribeButton authorId={id} /> : ''}
+        {id !== user.id && !subscription ? <SubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
+        {id !== user.id && subscription ? <UnsubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
       </Card.Footer>
     </Card>
   );

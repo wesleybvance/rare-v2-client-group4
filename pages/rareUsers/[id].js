@@ -20,13 +20,14 @@ export default function UserProfile() {
   };
 
   const checkSubs = () => {
+    getAUser(id);
     const payload = { followerId: user.id };
     checkSubscription(id, payload)
       .then(setSubscription);
   };
 
   useEffect(() => {
-    getAUser(id);
+    // getAUser(id);
     checkSubs();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);

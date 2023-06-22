@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useAuth } from '../../utils/context/authContext';
-import { signOut } from '../../utils/auth';
-import { deleteUser, getSingleUser } from '../../api/userData';
+import { getSingleUser } from '../../api/userData';
 
 export default function UserProfile() {
   const [userDetails, setUserDetails] = useState({});
-  const { user } = useAuth();
   const router = useRouter();
-  // const { id } = router.query;
-
-  const deleteProfile = () => {
-    if (window.confirm('Are you sure you would like to delete your profile? You cannot undo this.')) {
-      deleteUser(user.id).then(() => signOut());
-    }
-  };
+  const { id } = router.query;
 
   const getAUser = () => {
-    getSingleUser(user.id).then((data) => setUserDetails(data));
+    getSingleUser(id).then((data) => setUserDetails(data));
   };
 
   useEffect(() => {
-    getAUser(user.id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.id]);
+    getAUser(id);
+  }, [id]);
 
   return (
     <>
@@ -47,15 +37,6 @@ export default function UserProfile() {
         <h2>Email: {userDetails.email}</h2>
         <p>Bio: {userDetails.bio} </p>
         <p>Followers: {userDetails.subscription_count} </p>
-        <Button
-          onClick={() => {
-            router.push(`/rareUsers/edit/${userDetails.id}`);
-          }}
-        >
-          Edit Profile
-        </Button>
-        <Button variant="danger" onClick={deleteProfile}> Delete Profile</Button>
-        <Button variant="success" onClick={signOut}> Sign Out</Button>
       </div>
     </>
   );

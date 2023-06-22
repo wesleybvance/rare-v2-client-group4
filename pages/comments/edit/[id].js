@@ -12,8 +12,8 @@ export default function UpdateComment() {
   const [postId, setPostId] = useState();
 
   useEffect(() => {
-    getSingleComment(commentId.id).then(setEditComment).then(setPostId(editComment.post_id));
-    console.warn(postId);
+    getSingleComment(commentId.id).then(setEditComment);
+    getSingleComment(commentId.id).then((data) => setPostId(data.post_id));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentId]);
 

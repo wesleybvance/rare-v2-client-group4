@@ -11,16 +11,18 @@ const deleteComment = (commentId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const postComment = (uid, postId) => new Promise((resolve, reject) => {
+const postComment = (uid, postId, comment) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/posts/${postId}/post_comment`, {
     method: 'POST',
+    body: JSON.stringify(
+      comment,
+    ),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${uid}`,
+      Accept: 'application/json',
     },
   })
-    .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then((response) => resolve(response.json()))
     .catch(reject);
 });
 

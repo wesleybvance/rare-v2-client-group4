@@ -6,6 +6,8 @@ import { Image } from 'react-bootstrap';
 import { getSinglePost } from '../../utils/data/postdata';
 import { getCommentsByPostId } from '../../utils/data/commentData';
 import CommentCard from '../../components/comments/CommentCard';
+import CommentForm from '../../components/comments/CommentForm';
+import { useAuth } from '../../utils/context/authContext';
 
 function ViewPost() {
   const [postDetails, setPostDetails] = useState({});
@@ -14,6 +16,7 @@ function ViewPost() {
   const { id } = router.query ?? {};
   const postId = router.query;
   const [comments, setComments] = useState([]);
+  const { user } = useAuth();
 
   // const updateCommentsList = () => {
   //   getpostComments(firebaseKey).then(setComments);
@@ -24,6 +27,7 @@ function ViewPost() {
 
   useEffect(() => {
     getSinglePost(id).then(setPostDetails);
+    console.warn(Number(postId.id));
     // getpostComments(firebaseKey).then(setComments);
     getAllComments();
   }, [id]);
@@ -58,6 +62,8 @@ function ViewPost() {
           <CommentCard key={comment.firebaseKey} commentObj={comment} onUpdate={() => getMediaComments(firebaseKey).then(setComments)} />
         ))}
       </div> */}
+      <h2>Post Comment</h2>
+      <CommentForm user={user} commentPostId={Number(postId.id)} />
       {comments.map((comment) => (
         <section key={`comment--${comment.id}`} className="comment">
           <CommentCard content={comment.content} postId={comment.post_id} authorId={comment.author_id} createdOn={comment.created_on} id={comment.id} onUpdate={getAllComments} />

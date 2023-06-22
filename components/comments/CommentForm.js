@@ -49,17 +49,17 @@ const CommentForm = ({ user, obj, commentPostId }) => {
         postId: obj.postId,
       };
       updateComment(putComment).then(
-        // () => router.replace(`/posts/${currentComment.postId}`)
-        (data) => console.warn(data),
+        () => router.replace(`/posts/${commentPostId}`),
       );
     } else {
       const comment = {
         content: currentComment.content,
-        postId: commentPostId.id,
+        postId: commentPostId,
         authorId: user.uid,
       };
       // Send POST request to your API
-      postComment(comment).then(() => router.replace(`/posts/${commentPostId.id}`));
+      console.warn(comment);
+      postComment(user.uid, commentPostId, comment).then(() => router.replace(`/posts/${commentPostId}`));
     }
   };
 
@@ -90,7 +90,7 @@ CommentForm.propTypes = {
   obj: PropTypes.shape({
     id: PropTypes.number,
     content: PropTypes.string,
-    authorId: PropTypes.number,
+    authorId: PropTypes.string,
     postId: PropTypes.number,
     createdOn: PropTypes.string,
   }),

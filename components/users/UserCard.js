@@ -15,6 +15,7 @@ const UserCard = ({
   profileImageUrl,
   email,
   subscriptionCount,
+  onUpdate,
 }) => {
   const { user } = useAuth();
   const [subscription, setSubscription] = useState(false);
@@ -24,10 +25,10 @@ const UserCard = ({
     const payload = { followerId: user.id };
     checkSubscription(id, payload)
       .then(setSubscription);
+    onUpdate();
   };
   useEffect(() => {
     checkSubs();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -61,6 +62,7 @@ UserCard.propTypes = {
   profileImageUrl: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   subscriptionCount: PropTypes.number.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default UserCard;

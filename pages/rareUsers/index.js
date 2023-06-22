@@ -25,7 +25,7 @@ function UserPage() {
                   <div key={`user--${user.id}`} className="col-lg-4 col-h-100 mb-3 d-flex align-items-stretch user-cards">
                     <div className="card-body d-flex flex-column">
                       <section className="user">
-                        <UserCard id={user.id} firstName={user.first_name} lastName={user.last_name} bio={user.bio} profileImageUrl={user.profile_image_url} email={user.email} subscriptionCount={user.subscription_count} />
+                        <UserCard id={user.id} firstName={user.first_name} lastName={user.last_name} bio={user.bio} profileImageUrl={user.profile_image_url} email={user.email} subscriptionCount={user.subscription_count} onUpdate={getAllUsers} />
                       </section>
                     </div>
                   </div>

@@ -91,11 +91,12 @@ CommentForm.propTypes = {
     postId: PropTypes.number,
     createdOn: PropTypes.string,
   }),
-  commentPostId: PropTypes.number.isRequired,
+  commentPostId: PropTypes.number,
 };
 
 CommentForm.defaultProps = {
   obj: initialState,
+  commentPostId: 0,
 };
 
 export default CommentForm;

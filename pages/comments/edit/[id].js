@@ -9,17 +9,15 @@ export default function UpdateComment() {
   const router = useRouter();
   const commentId = router.query;
   const [editComment, setEditComment] = useState({});
-  const [postId, setPostId] = useState({});
 
   useEffect(() => {
-    getSingleComment(commentId.id).then(setEditComment).then(setPostId(editComment.post_id));
-    console.warn(postId);
+    getSingleComment(commentId.id).then(setEditComment);
   }, [commentId]);
 
   return (
     <div>
       <h2>Update Comment</h2>
-      <CommentForm user={user} obj={editComment} commentPostId={postId} />
+      <CommentForm user={user} obj={editComment} commentPostId={editComment.post_id} />
     </div>
   );
 }

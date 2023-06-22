@@ -15,6 +15,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     getAUser(id);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

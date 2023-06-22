@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "rare_client",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "yler Eisen",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

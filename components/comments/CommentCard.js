@@ -24,10 +24,10 @@ export default function CommentCard({
   return (
     <Card className="text-center">
       <Card.Body>
-        <Card.Title>comment by {authorId}</Card.Title>
+        <Card.Title>comment {id}</Card.Title>
         <Card.Text>{content}</Card.Text>
       </Card.Body>
-      <Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Game</Button>
+      <Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button>
       <Button className="delete-comment" variant="black" onClick={deleteCommentCard}>Delete Comment</Button>
     </Card>
   );

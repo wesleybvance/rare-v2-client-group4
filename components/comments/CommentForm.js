@@ -46,9 +46,12 @@ const CommentForm = ({ user, obj, commentPostId }) => {
         authorId: obj.authorId,
         content: currentComment.content,
         createdOn: obj.createdOn,
-        postId: commentPostId,
+        postId: obj.postId,
       };
-      updateComment(putComment).then(() => router.replace(`/posts/${commentPostId.id}/comments`));
+      updateComment(putComment).then(
+        // () => router.replace(`/posts/${currentComment.postId}`)
+        (data) => console.warn(data),
+      );
     } else {
       const comment = {
         content: currentComment.content,
@@ -56,7 +59,7 @@ const CommentForm = ({ user, obj, commentPostId }) => {
         authorId: user.uid,
       };
       // Send POST request to your API
-      postComment(comment).then(() => router.replace(`/posts/${commentPostId.id}/comments`));
+      postComment(comment).then(() => router.replace(`/posts/${commentPostId.id}`));
     }
   };
 
@@ -69,7 +72,7 @@ const CommentForm = ({ user, obj, commentPostId }) => {
             label="Content"
             className="mb-3"
           >
-            <Form.Control name="title" type="text" required value={currentComment.content} onChange={handleChange} />
+            <Form.Control name="content" type="text" required value={currentComment.content} onChange={handleChange} />
           </FloatingLabel>
         </Form.Group>
         <Button variant="primary" type="submit">

@@ -46,6 +46,13 @@ const updateComment = (comment) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCommentsByPostId = (postId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/posts/${postId}/comments`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  deleteComment, postComment, getSingleComment, updateComment,
+  deleteComment, postComment, getSingleComment, updateComment, getCommentsByPostId,
 };

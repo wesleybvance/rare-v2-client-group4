@@ -27,9 +27,9 @@ function ViewPost() {
 
   useEffect(() => {
     getSinglePost(id).then(setPostDetails);
-    console.warn(Number(postId.id));
     // getpostComments(firebaseKey).then(setComments);
     getAllComments();
+    console.warn(user);
   }, [id]);
 
   return (
@@ -63,7 +63,7 @@ function ViewPost() {
         ))}
       </div> */}
       <h2>Post Comment</h2>
-      <CommentForm user={user} commentPostId={Number(postId.id)} />
+      <CommentForm user={user} commentPostId={Number(postId.id)} onSubmit={getAllComments} />
       {comments.map((comment) => (
         <section key={`comment--${comment.id}`} className="comment">
           <CommentCard content={comment.content} postId={comment.post_id} authorId={comment.author_id} createdOn={comment.created_on} id={comment.id} onUpdate={getAllComments} />

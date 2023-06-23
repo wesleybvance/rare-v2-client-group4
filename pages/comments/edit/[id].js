@@ -17,10 +17,14 @@ export default function UpdateComment() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentId]);
 
+  const checkComment = () => {
+    console.warn('hey');
+  };
+
   return (
     <div>
       <h2>Update Comment</h2>
-      <CommentForm user={user} obj={editComment} commentPostId={postId} />
+      <CommentForm user={user} obj={editComment} commentPostId={postId} onSubmit={checkComment} />
     </div>
   );
 }

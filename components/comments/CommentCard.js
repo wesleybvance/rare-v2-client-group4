@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { deleteComment } from '../../utils/data/commentData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function CommentCard({
   id,
@@ -14,6 +15,7 @@ export default function CommentCard({
   onUpdate,
 }) {
   const router = useRouter();
+  const { user } = useAuth();
 
   const deleteCommentCard = () => {
     if (window.confirm('Do you want to delete this comment?')) {
@@ -22,13 +24,18 @@ export default function CommentCard({
   };
 
   return (
-    <Card className="text-center">
+    <Card className="comment-card text-center">
       <Card.Body>
-        <Card.Title>comment {id}</Card.Title>
+        <Card.Title className="comment-card-title">
+          <Card.Img className="comment-prof-pic" src={user.profile_image_url} />
+          <div className="comment-user-cont">
+            <Card.Link className="comment-username" href="/rareUsers/">{user.first_name} {user.last_name}</Card.Link>
+            <Card.Text className="comment-created">{createdOn}</Card.Text>
+          </div>
+        </Card.Title>
         <Card.Text>{content}</Card.Text>
       </Card.Body>
-      <Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button>
-      <Button className="delete-comment" variant="black" onClick={deleteCommentCard}>Delete Comment</Button>
+      {(user.id === authorId) ? (<><Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button><Button className="delete-comment" variant="black" onClick={deleteCommentCard}>Delete Comment</Button></>) : ''}
     </Card>
   );
 }

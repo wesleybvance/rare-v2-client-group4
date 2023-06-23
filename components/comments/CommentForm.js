@@ -13,7 +13,9 @@ const initialState = {
   createdOn: '',
 };
 
-const CommentForm = ({ user, obj, commentPostId }) => {
+const CommentForm = ({
+  user, obj, commentPostId, onSubmit,
+}) => {
   const [currentComment, setCurrentComment] = useState(initialState);
   const router = useRouter();
 
@@ -55,11 +57,11 @@ const CommentForm = ({ user, obj, commentPostId }) => {
       const comment = {
         content: currentComment.content,
         postId: commentPostId,
-        authorId: user.uid,
+        authorId: user.id,
       };
       // Send POST request to your API
-      console.warn(comment);
-      postComment(user.uid, commentPostId, comment).then(() => router.replace(`/posts/${commentPostId}`));
+      postComment(user.id, commentPostId, comment).then(() => router.replace(`/posts/${commentPostId}`)).then(() => onSubmit());
+      setCurrentComment(initialState);
     }
   };
 
@@ -85,16 +87,17 @@ const CommentForm = ({ user, obj, commentPostId }) => {
 
 CommentForm.propTypes = {
   user: PropTypes.shape({
-    uid: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   obj: PropTypes.shape({
     id: PropTypes.number,
     content: PropTypes.string,
-    authorId: PropTypes.string,
-    postId: PropTypes.number,
+    authorId: PropTypes.number,
+    postId: PropTypes.string,
     createdOn: PropTypes.string,
   }),
   commentPostId: PropTypes.number,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 CommentForm.defaultProps = {

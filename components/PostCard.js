@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Image } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { deletePost } from '../utils/data/postdata';
@@ -29,7 +29,7 @@ const PostCard = ({
         <Card.Header style={{ cursor: 'pointer' }}>{title}</Card.Header>
       </Link>
       <Card.Body>
-        <img src={imageUrl} alt={title} style={{ width: '100%', height: 'auto' }} />
+        <Image src={imageUrl} alt={title} style={{ width: '100%', height: 'auto' }} />
         <Card.Text>{formattedDate}</Card.Text>
         <Card.Text>{content}</Card.Text>
       </Card.Body>

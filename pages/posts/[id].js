@@ -29,7 +29,6 @@ function ViewPost() {
     getSinglePost(id).then(setPostDetails);
     // getpostComments(firebaseKey).then(setComments);
     getAllComments();
-    console.warn(user);
   }, [id]);
 
   return (

@@ -26,3 +26,33 @@ body {
   height: 18vw;
   object-fit: cover;
 }
+
+
+/* COMMENT STYLING  */
+
+.comment-card {
+  width: 800px;
+}
+
+.comment-prof-pic {
+  height: 50px;
+  width: 50px;
+}
+
+.comment-card-title {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  font-size: 18px;
+}
+
+.comment-username {
+  padding: 15px 0px 0px 25px;
+}
+
+.comment-created {
+  padding: 5px 0px 0px 5px;
+  font-size: 13px;
+}
+
+/* END COMMENT STYLING  */

@@ -2,7 +2,7 @@
   "name": "rare-v2-group-4",
   "private": true,
   "version": "1.0.0",
-  "author": "Whitley Beers, Mark Hamilton, Wesley Vance, Tyler Eisen",
+  "author": "Mark Hamilton, Whitley Beers, Tyler Eisen, Wesley Vance",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

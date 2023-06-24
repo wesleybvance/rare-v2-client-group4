@@ -13,6 +13,7 @@ function Home() {
 
   useEffect(() => {
     getSubPosts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (

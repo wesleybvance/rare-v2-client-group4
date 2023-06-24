@@ -29,7 +29,7 @@ export default function CommentCard({
         <Card.Title className="comment-card-title">
           <Card.Img className="comment-prof-pic" src={user.profile_image_url} />
           <div className="comment-user-cont">
-            <Card.Link className="comment-username" href="/rareUsers/">{user.first_name} {user.last_name}</Card.Link>
+            <Card.Link className="comment-username" href={`/rareUsers/${user.id}`}>{user.first_name} {user.last_name}</Card.Link>
             <Card.Text className="comment-created">{createdOn}</Card.Text>
           </div>
         </Card.Title>

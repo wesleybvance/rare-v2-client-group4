@@ -13,7 +13,9 @@ import PostCard from '../../components/PostCard';
 export default function UserProfile() {
   const [userDetails, setUserDetails] = useState({});
   const router = useRouter();
-  const { id } = router.query;
+
+  const id = parseInt(router.query.id, 10);
+
   const { user } = useAuth();
   const [subscription, setSubscription] = useState(false);
   const [posts, setPosts] = useState([]);

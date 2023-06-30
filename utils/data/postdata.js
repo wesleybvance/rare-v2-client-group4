@@ -66,6 +66,13 @@ const updatePost = (id, currentPost) => fetch(`${clientCredentials.databaseURL}/
     throw error;
   });
 
+const getPostsByUser = (userId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/posts?user=${userId}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  getPosts, createPost, deletePost, updatePost, getSinglePost,
+  getPosts, createPost, deletePost, updatePost, getSinglePost, getPostsByUser,
 };

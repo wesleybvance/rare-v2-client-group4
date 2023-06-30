@@ -34,7 +34,7 @@ const PostCard = ({
         <Card.Header style={{ cursor: 'pointer' }}>{title}</Card.Header>
       </Link>
       <Card.Body>
-        <Image src={imageUrl} alt={title} style={{ width: '100%', height: 'auto' }} />
+        <Image src={imageUrl} alt={title} style={{ width: 'auto', height: 'auto' }} />
         <Card.Text>{formattedDate}</Card.Text>
         <Card.Text>{userId.first_name} {userId.last_name}</Card.Text>
         <Card.Text>{content}</Card.Text>

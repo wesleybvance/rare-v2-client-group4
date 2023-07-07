@@ -1,9 +1,20 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
+import { getSubscriptions } from '../api/subscriptionData';
+import PostCard from '../components/PostCard';
 
 function Home() {
   const { user } = useAuth();
+  const [subscriptions, setSubscriptions] = useState([]);
+
+  const getSubPosts = () => {
+    getSubscriptions(user.id).then(setSubscriptions);
+  };
+
+  useEffect(() => {
+    getSubPosts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div
@@ -12,15 +23,32 @@ function Home() {
         height: '90vh',
         padding: '30px',
         maxWidth: '400px',
-        margin: '0 auto',
+        margin: '20px auto',
       }}
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <div>
+        {subscriptions.map((subscription) => (
+          <div key={subscription.id}>
+            {subscription.author_id.posts && subscription.author_id.posts.length > 0 ? (
+              subscription.author_id.posts.map((post) => (
+                <PostCard
+                  key={post.id}
+                  id={post.id}
+                  userId={subscription.author_id}
+                  title={post.title}
+                  publicationDate={post.publication_date}
+                  imageUrl={post.image_url}
+                  content={post.content}
+                  onUpdate={getSubPosts}
+                />
+              ))
+            ) : (
+              ''
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

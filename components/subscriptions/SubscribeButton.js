@@ -16,7 +16,7 @@ export default function SubscribeButton({ authorId, onUpdate }) {
   };
 
   return (
-    <Button onClick={subscribe} variant="primary">
+    <Button className="sub-btn" onClick={subscribe} variant="primary">
       Subscribe
     </Button>
   );

@@ -23,15 +23,18 @@ function Home() {
 
   return (
     <>
-      <Button
-        className="register-btn"
-        onClick={() => {
-          router.push('/posts/new');
-        }}
-      >
-        Register New Post
-      </Button>
-      <h1>Posts</h1>
+      <div className="post-header">
+        <h1 className="welcome-text">Posts</h1>
+        <Button
+          className="register-btn"
+          onClick={() => {
+            router.push('/posts/new');
+          }}
+        >
+          Register New Post
+        </Button>
+      </div>
+      <hr />
       <div style={{
         display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center',
       }}

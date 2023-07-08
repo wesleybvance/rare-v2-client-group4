@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: white;
 }
 
 .card-img-top {
@@ -27,6 +27,32 @@ body {
   object-fit: cover;
 }
 
+/* NAVBAR STYLING  */
+.nav-header {
+  font-family: 'Bebas Neue', sans-serif;
+  color: white;
+  font-size: 45px;
+}
+
+.nav-lnk {
+  margin: 0px 25px 0px 25px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 17px;
+  color: white;
+  /* font-style: italic; */
+}
+
+.nav-bar-border {
+  border-style: double;
+  border-width: 0px 0px 8px 0px;
+  border-color: white;
+}
+
+.nav-btn {
+  border-radius: 2px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 17px;
+}
 
 /* COMMENT STYLING  */
 
@@ -43,6 +69,7 @@ body {
   display: flex;
   justify-content: left;
   align-items: flex-start;
+  justify-content: space-between;
   font-size: 18px;
 }
 
@@ -55,4 +82,276 @@ body {
   font-size: 13px;
 }
 
-/* END COMMENT STYLING  */
+/* HOMEPAGE STYLING  */
+
+.home-posts-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.welcome-text {
+  align-self: flex-start;
+  margin: 30px;
+  font-family: 'Prata', sans-serif;
+  font-size: 35px;
+}
+
+/* POST CARD/PAGE STYLING  */
+
+.post-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.register-btn {
+  height: 40px;
+  margin: 30px 0px 0px 0px;
+  font-family: 'Prata', sans-serif;
+  background-color:darkred;
+  border-style: none;
+}
+
+.register-btn:hover {
+  background-color: white;
+  color: gray;
+}
+
+.post-card {
+  margin: 20px;
+  width: 350px;
+}
+
+.post-img {
+  border-style: solid;
+  border-width: 0.5px;
+  max-width: 300px;
+}
+
+.post-title-link {
+  font-family: 'Belanosima', serif;
+  font-size: 22px;
+  margin: 1px;
+  flex-grow: 2;
+}
+
+.post-user-link {
+  font-family: 'Belanosima', serif;
+  font-size: 16px;
+  margin: 1px;
+}
+
+.post-user-link:hover {
+  color:brown;
+}
+
+.post-date {
+  font-size: 10px;
+  margin: 1px;
+}
+
+.post-content {
+  font-size: 14px;
+  margin: 8px;
+}
+
+.edit-btn {
+  font-family: 'Prata', sans-serif;
+  background-color:gray;
+  border-style: none; 
+  font-size: 12px;
+  width: 80px;
+  margin: 0px 0px 30px 0px;
+  align-self: center;
+}
+
+.edit-btn:hover {
+  background-color: white;
+  color: gray;
+}
+
+.delete-btn {
+  align-self: center;
+  font-family: 'Belanosima', sans-serif;
+  justify-self: center;
+  background-color: #f8f8f8;
+  color: darkred;
+  margin: auto;
+  border-style: none;
+  font-size: 20px;
+}
+
+.delete-btn:hover {
+  background-color: gray;
+}
+
+.post-header {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+/* USER PAGE STYLING */
+
+.view-btn {
+  font-family: 'Prata', sans-serif;
+  color: black;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  font-size: 12px;
+  width: 100px;
+  margin: 0px 0px 30px 0px;
+  align-self: center;
+}
+
+.view-btn:hover {
+  background-color: lightgray;
+  color: black;
+  border-style: solid;
+  border-color: gray;
+}
+
+.unsub-btn {
+  font-family: 'Prata', sans-serif;
+  background-color:darkred;
+  border-style: none;
+  font-size: 12px;
+}
+
+.sub-btn {
+  font-family: 'Prata', sans-serif;
+  background-color:black;
+  border-style: solid;
+  border-color: black;
+  font-size: 12px;
+}
+
+.sub-btn:hover {
+  background-color:white;
+  color: black;
+  border-color: black;
+}
+
+/* POST DETAILS PAGE STYLING  */
+
+
+.post-img-detail {
+  margin: 0px 0px 30px 0px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  min-width: 350px;
+}
+
+.post-details-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-details-title {
+  font-family: 'Prata', sans-serif;
+  color:black;
+}
+
+.post-details-text {
+  color: black;
+  font-family: 'Shippori Mincho';
+}
+
+.post-content-detail {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  padding: 40px;
+  margin: 20px 0px 0px 0px;
+  min-width: 800px;
+  min-height: 200px;
+}
+
+.post-content-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-comment-title {
+  justify-self: center;
+  font-family: 'Prata', sans-serif;
+  color:black;
+  font-size: 22px;
+  margin: 50px 0px 15px 0px;
+}
+
+.content-form {
+  width: 500px;
+}
+
+.post-details-cont2 {
+  display: flex;
+}
+
+.comment-form-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-card {
+  margin: 15px;
+}
+
+.delete-button {
+  font-family: 'Belanosima', sans-serif;
+  justify-self: center;
+  background-color: #f8f8f8;
+  color: darkred;
+  margin: auto;
+  border-style: none;
+  font-size: 20px;
+}
+
+.display-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.display-row-btwn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.view-edit-btn {
+  font-family: 'Prata', sans-serif;
+  color: black;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  font-size: 12px;
+  width: 120px;
+  margin: 10px 0px 30px 0px;
+  align-self: center;
+}
+
+.view-edit-btn:hover {
+  background-color: lightgray;
+  color: black;
+  border-style: solid;
+  border-color: gray;
+}
+
+.signout-btn {
+  font-family: 'Prata', sans-serif;
+  color: black;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  font-size: 12px;
+  width: 100px;
+}
+
+/* Bebas Neue ; Belanosima ; Gloock ; Oranienbaum ; Prata ; */
+/* Shippori Mincho ; Staatliches */

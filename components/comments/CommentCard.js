@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { deleteComment } from '../../utils/data/commentData';
 import { useAuth } from '../../utils/context/authContext';
+import { getSingleUser } from '../../api/userData';
 
 export default function CommentCard({
   id,
@@ -16,6 +17,7 @@ export default function CommentCard({
 }) {
   const router = useRouter();
   const { user } = useAuth();
+  const [commentUser, setCommentUser] = useState({});
 
   const deleteCommentCard = () => {
     if (window.confirm('Do you want to delete this comment?')) {
@@ -23,19 +25,32 @@ export default function CommentCard({
     }
   };
 
+  const getCommentUser = (aid) => {
+    getSingleUser(aid).then((data) => setCommentUser(data));
+  };
+
+  useEffect(() => {
+    getCommentUser(authorId);
+  }, [authorId]);
+
   return (
     <Card className="comment-card text-center">
       <Card.Body>
         <Card.Title className="comment-card-title">
-          <Card.Img className="comment-prof-pic" src={user.profile_image_url} />
-          <div className="comment-user-cont">
-            <Card.Link className="comment-username" href="/rareUsers/">{user.first_name} {user.last_name}</Card.Link>
-            <Card.Text className="comment-created">{createdOn}</Card.Text>
+
+          <div className="display-row">
+            <Card.Img className="comment-prof-pic" src={commentUser.profile_image_url} />
+            <div className="comment-user-cont">
+              <Card.Link className="comment-username" href={`/rareUsers/${commentUser.id}`}>{commentUser.first_name} {commentUser.last_name}</Card.Link>
+              <Card.Text className="comment-created">{createdOn}</Card.Text>
+            </div>
           </div>
+          <div>{(user.id === authorId) ? (<Button className="delete-button" variant="black" onClick={deleteCommentCard}>x</Button>) : ''}</div>
+
         </Card.Title>
         <Card.Text>{content}</Card.Text>
       </Card.Body>
-      {(user.id === authorId) ? (<><Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button><Button className="delete-comment" variant="black" onClick={deleteCommentCard}>Delete Comment</Button></>) : ''}
+      {(user.id === authorId) ? (<Button className="view-edit-btn" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button>) : ''}
     </Card>
   );
 }

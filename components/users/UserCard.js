@@ -36,10 +36,11 @@ const UserCard = ({
     <Card className="text-center" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={profileImageUrl} />
       <Card.Body>
-        <Card.Title>Name: {firstName} {lastName}</Card.Title>
-        <Card.Subtitle>Email: {email}</Card.Subtitle>
-        <Card.Text>{bio}</Card.Text>
+        <Card.Title className="post-title-link">{firstName} {lastName}</Card.Title>
+        <Card.Subtitle className="post-content">Email: {email}</Card.Subtitle>
+        <Card.Text className="post-content">{bio}</Card.Text>
         <Button
+          className="view-btn"
           onClick={() => {
             router.push(`rareUsers/${id}`);
           }}

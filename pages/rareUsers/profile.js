@@ -44,19 +44,20 @@ export default function UserProfile() {
         />
       </div>
       <div className="profile-font" style={{ marginTop: '35px' }}>
-        <h1>Name: {userDetails.first_name} {userDetails.last_name}</h1>
-        <h2>Email: {userDetails.email}</h2>
-        <p>Bio: {userDetails.bio} </p>
-        <p>Followers: {userDetails.subscription_count} </p>
+        <h2 className="post-details-title">{userDetails.first_name} {userDetails.last_name}</h2>
+        <h5 className="post-details-title">{userDetails.email}</h5>
+        <p className="post-details-text">Bio: {userDetails.bio} </p>
+        <p className="post-content">Followers: {userDetails.subscription_count} </p>
         <Button
+          className="sub-btn"
           onClick={() => {
             router.push(`/rareUsers/edit/${userDetails.id}`);
           }}
         >
           Edit Profile
         </Button>
-        <Button variant="danger" onClick={deleteProfile}> Delete Profile</Button>
-        <Button variant="success" onClick={signOut}> Sign Out</Button>
+        <Button variant="danger" className="unsub-btn" onClick={deleteProfile}> Delete Profile</Button>
+        <Button variant="success" className="signout-btn" onClick={signOut}> Sign Out</Button>
       </div>
     </>
   );

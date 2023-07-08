@@ -19,7 +19,7 @@ export default function UnsubscribeButton({ authorId, onUpdate }) {
   };
 
   return (
-    <Button onClick={unsubscribe} variant="danger">
+    <Button className="unsub-btn" onClick={unsubscribe} variant="danger">
       Unsubscribe
     </Button>
   );

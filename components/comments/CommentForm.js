@@ -67,17 +67,17 @@ const CommentForm = ({
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="comment-form-cont">
         <Form.Group className="mb-3">
           <FloatingLabel
             controlId="floatingInput1"
-            label="Content"
+            // label="Content"
             className="mb-3"
           >
-            <Form.Control name="content" type="text" required value={currentComment.content} onChange={handleChange} />
+            <Form.Control className="content-form" name="content" type="text" required value={currentComment.content} onChange={handleChange} />
           </FloatingLabel>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="edit-btn" variant="primary" type="submit">
           Submit
         </Button>
       </Form>

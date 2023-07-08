@@ -16,7 +16,8 @@ function UserPage() {
   return (
     <>
       <article className="users">
-        <h1>Users</h1>
+        <h1 className="welcome-text">Users</h1>
+        <hr />
         <div className="container">
           <div className="row pt-5">
             <div className="col-10">

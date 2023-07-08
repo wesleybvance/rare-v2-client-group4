@@ -29,15 +29,23 @@ const PostCard = ({
   const formattedDate = new Date(publicationDate).toLocaleDateString();
 
   return (
-    <Card className="text-center">
-      <Link href={`/posts/${id}`} passHref>
-        <Card.Header style={{ cursor: 'pointer' }}>{title}</Card.Header>
-      </Link>
+    <Card className="post-card text-center">
+      <Card.Header className="post-header" style={{ cursor: 'pointer' }}>
+        {isCurrentUserPost ? (
+          <Button
+            className="delete-btn"
+            onClick={deleteThisPost}
+          >
+            x
+          </Button>
+        ) : null}
+        <Link href={`/posts/${id}`} passHref><Card.Text className="post-title-link">{title}</Card.Text></Link>
+      </Card.Header>
       <Card.Body>
-        <Image src={imageUrl} alt={title} style={{ width: 'auto', height: 'auto' }} />
-        <Card.Text>{formattedDate}</Card.Text>
-        <Card.Text>{userId.first_name} {userId.last_name}</Card.Text>
-        <Card.Text>{content}</Card.Text>
+        <Image className="post-img" src={imageUrl} alt={title} style={{ width: 'auto', height: 'auto' }} />
+        <Link href={`/rareUsers/${userId.id}`} passHref><Card.Text className="post-user-link">by {userId.first_name} {userId.last_name}</Card.Text></Link>
+        <Card.Text className="post-date">{formattedDate}</Card.Text>
+        <Card.Text className="post-content">{content}</Card.Text>
       </Card.Body>
       {isCurrentUserPost ? (
         <>
@@ -48,12 +56,6 @@ const PostCard = ({
             }}
           >
             Edit Post
-          </Button>
-          <Button
-            className="delete-btn"
-            onClick={deleteThisPost}
-          >
-            Delete
           </Button>
         </>
       ) : null}

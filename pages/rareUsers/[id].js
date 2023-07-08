@@ -54,14 +54,14 @@ export default function UserProfile() {
         />
       </div>
       <div className="profile-font" style={{ marginTop: '35px' }}>
-        <h1>Name: {userDetails.first_name} {userDetails.last_name}</h1>
-        <h2>Email: {userDetails.email}</h2>
-        <p>Bio: {userDetails.bio} </p>
-        <p>Followers: {userDetails.subscription_count} </p>
+        <h2 className="post-details-title">{userDetails.first_name} {userDetails.last_name}</h2>
+        <h5 className="post-details-title">{userDetails.email}</h5>
+        <p className="post-details-text">Bio: {userDetails.bio} </p>
+        <p className="post-content">Followers: {userDetails.subscription_count} </p>
         {id !== user.id && !subscription ? <SubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
         {id !== user.id && subscription ? <UnsubscribeButton authorId={id} onUpdate={checkSubs} /> : ''}
       </div>
-      <div className="m-3">
+      <div className="m-3 display-row">
         {posts.length
           ? (
             posts.map((post) => (

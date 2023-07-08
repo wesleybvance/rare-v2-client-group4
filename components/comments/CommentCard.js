@@ -37,15 +37,20 @@ export default function CommentCard({
     <Card className="comment-card text-center">
       <Card.Body>
         <Card.Title className="comment-card-title">
-          <Card.Img className="comment-prof-pic" src={commentUser.profile_image_url} />
-          <div className="comment-user-cont">
-            <Card.Link className="comment-username" href={`/rareUsers/${commentUser.id}`}>{commentUser.first_name} {commentUser.last_name}</Card.Link>
-            <Card.Text className="comment-created">{createdOn}</Card.Text>
+
+          <div className="display-row">
+            <Card.Img className="comment-prof-pic" src={commentUser.profile_image_url} />
+            <div className="comment-user-cont">
+              <Card.Link className="comment-username" href={`/rareUsers/${commentUser.id}`}>{commentUser.first_name} {commentUser.last_name}</Card.Link>
+              <Card.Text className="comment-created">{createdOn}</Card.Text>
+            </div>
           </div>
+          <div>{(user.id === authorId) ? (<Button className="delete-button" variant="black" onClick={deleteCommentCard}>x</Button>) : ''}</div>
+
         </Card.Title>
         <Card.Text>{content}</Card.Text>
       </Card.Body>
-      {(user.id === authorId) ? (<><Button className="edit-comment" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button><Button className="delete-comment" variant="black" onClick={deleteCommentCard}>Delete Comment</Button></>) : ''}
+      {(user.id === authorId) ? (<Button className="view-edit-btn" variant="black" onClick={(e) => router.replace(`/comments/edit/${id}`)}>Edit Comment</Button>) : ''}
     </Card>
   );
 }

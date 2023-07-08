@@ -19,17 +19,18 @@ function Home() {
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '20px auto',
-      }}
+      // style={{
+      //   height: '90vh',
+      //   padding: '30px',
+      //   maxWidth: '400px',
+      //   margin: '20px auto',
+      // }}
     >
-      <h1>Hello {user.fbUser.displayName}! </h1>
+      <h1 className="welcome-text">Welcome, {user.fbUser.displayName} </h1>
+      <hr />
       <div>
         {subscriptions.map((subscription) => (
-          <div key={subscription.id}>
+          <div className="home-posts-cont" key={subscription.id}>
             {subscription.author_id.posts && subscription.author_id.posts.length > 0 ? (
               subscription.author_id.posts.map((post) => (
                 <PostCard

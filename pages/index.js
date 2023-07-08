@@ -19,14 +19,9 @@ function Home() {
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '20px auto',
-      }}
     >
-      <h1>Hello {user.fbUser.displayName}! </h1>
+      <h1>Hello {user.first_name}! </h1>
+      <p>Welcome to your Home Page!</p>
       <div>
         {subscriptions.map((subscription) => (
           <div key={subscription.id}>

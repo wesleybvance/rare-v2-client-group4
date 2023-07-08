@@ -34,20 +34,25 @@ export default function SearchBar() {
   return (
     <>
       <div className="d-flex flex-wrap">
-        {searchPosts.map((post) => (
-          <div className="d-flex" key={post.id}>
-            <PostCard
-              postObj={post}
-              onUpdate={searchAllPosts}
-              id={post.id}
-              userId={user.id}
-              title={post.title}
-              publicationDate={post.publication_date}
-              imageUrl={post.image_url}
-              content={post.content}
-            />
+        {(searchPosts.length === 0 ? (
+          <div>
+            No Search Results
           </div>
-        ))}
+        )
+          : searchPosts.map((post) => (
+            <div className="d-flex" key={post.id}>
+              <PostCard
+                postObj={post}
+                onUpdate={searchAllPosts}
+                id={post.id}
+                userId={user.id}
+                title={post.title}
+                publicationDate={post.publication_date}
+                imageUrl={post.image_url}
+                content={post.content}
+              />
+            </div>
+          )))}
       </div>
     </>
   );

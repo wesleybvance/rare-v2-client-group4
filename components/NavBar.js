@@ -33,6 +33,7 @@ export default function NavBar() {
             <Link passHref href="/rareUsers/profile">
               <Nav.Link className="nav-lnk">profile</Nav.Link>
             </Link>
+            <SearchBar className="me-3" />
             <Button className="nav-btn" variant="light" onClick={signOut}>
               sign out
             </Button>

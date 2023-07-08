@@ -8,6 +8,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import SearchBar from './SearchBar';
 
 export default function NavBar() {
   return (
@@ -32,6 +33,7 @@ export default function NavBar() {
             <Link passHref href="/rareUsers/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
+            <SearchBar className="me-3" />
             <Button variant="danger" onClick={signOut}>
               Sign Out
             </Button>

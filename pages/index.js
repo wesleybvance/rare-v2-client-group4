@@ -26,7 +26,7 @@ function Home() {
       //   margin: '20px auto',
       // }}
     >
-      <h1 className="welcome-text">Welcome, {user.fbUser.displayName} </h1>
+      <h1 className="welcome-text">Welcome, {user.first_name} {user.last_name} </h1>
       <hr />
       <div>
         {subscriptions.map((subscription) => (
